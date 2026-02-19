@@ -240,7 +240,7 @@ const GameData = {
             class: null, // Random
             background: null, // Random
             deity: null,
-            imageUrl: "https://bg3.wiki/w/images/2/21/Custom_Character_Portrait.png"
+            imageUrl: "https://therightpathok.org/wp-content/uploads/2019/05/male-silhouette-copy.jpg"
         }
     },
 
