@@ -60,57 +60,71 @@ const UIController = {
 
     // Update probability controls based on mode
     updateProbabilityControls(mode) {
-        const controlsSection = document.getElementById('probability-controls');
-        const slidersContainer = document.getElementById('probability-sliders');
+        try {
+            const controlsSection = document.getElementById('probability-controls');
+            const slidersContainer = document.getElementById('probability-sliders');
 
-        // Show controls
-        controlsSection.classList.remove('hidden');
+            if (!controlsSection || !slidersContainer) {
+                console.error('Probability controls elements not found');
+                return;
+            }
 
-        // Clear existing sliders
-        slidersContainer.innerHTML = '';
+            // Show controls
+            controlsSection.classList.remove('hidden');
 
-        // Get origins for current mode
-        const origins = GameData.getOriginOptions(mode);
-        const probabilities = this.originProbabilities[mode];
+            // Clear existing sliders
+            slidersContainer.innerHTML = '';
 
-        // Create slider for each origin
-        origins.forEach(origin => {
-            const sliderDiv = document.createElement('div');
-            sliderDiv.className = 'probability-slider';
+            // Get origins for current mode
+            const origins = GameData.getOriginOptions(mode);
+            const probabilities = this.originProbabilities[mode];
 
-            const headerDiv = document.createElement('div');
-            headerDiv.className = 'slider-header';
+            console.log('Creating sliders for mode:', mode, 'origins:', origins);
 
-            const label = document.createElement('span');
-            label.className = 'slider-label';
-            label.textContent = origin;
+            // Create slider for each origin
+            origins.forEach(origin => {
+                const sliderDiv = document.createElement('div');
+                sliderDiv.className = 'probability-slider';
 
-            const valueSpan = document.createElement('span');
-            valueSpan.className = 'slider-value';
-            valueSpan.id = `value-${origin.replace(/[^a-zA-Z0-9]/g, '-')}`;
-            valueSpan.textContent = `${probabilities[origin].toFixed(1)}%`;
+                const headerDiv = document.createElement('div');
+                headerDiv.className = 'slider-header';
 
-            headerDiv.appendChild(label);
-            headerDiv.appendChild(valueSpan);
+                const label = document.createElement('span');
+                label.className = 'slider-label';
+                label.textContent = origin;
 
-            const slider = document.createElement('input');
-            slider.type = 'range';
-            slider.className = 'slider-input';
-            slider.min = '0';
-            slider.max = '100';
-            slider.step = '0.1';
-            slider.value = probabilities[origin];
-            slider.id = `slider-${origin.replace(/[^a-zA-Z0-9]/g, '-')}`;
+                const valueSpan = document.createElement('span');
+                valueSpan.className = 'slider-value';
+                const safeOriginId = origin.replace(/[^a-zA-Z0-9]/g, '-');
+                valueSpan.id = `value-${safeOriginId}`;
+                valueSpan.textContent = `${probabilities[origin].toFixed(1)}%`;
 
-            // Add event listener
-            slider.addEventListener('input', (e) => {
-                this.onProbabilityChange(origin, parseFloat(e.target.value));
+                headerDiv.appendChild(label);
+                headerDiv.appendChild(valueSpan);
+
+                const slider = document.createElement('input');
+                slider.type = 'range';
+                slider.className = 'slider-input';
+                slider.min = '0';
+                slider.max = '100';
+                slider.step = '0.1';
+                slider.value = probabilities[origin];
+                slider.id = `slider-${safeOriginId}`;
+
+                // Add event listener
+                slider.addEventListener('input', (e) => {
+                    this.onProbabilityChange(origin, parseFloat(e.target.value));
+                });
+
+                sliderDiv.appendChild(headerDiv);
+                sliderDiv.appendChild(slider);
+                slidersContainer.appendChild(sliderDiv);
             });
 
-            sliderDiv.appendChild(headerDiv);
-            sliderDiv.appendChild(slider);
-            slidersContainer.appendChild(sliderDiv);
-        });
+            console.log('Probability controls updated successfully');
+        } catch (error) {
+            console.error('Error updating probability controls:', error);
+        }
     },
 
     // Handle probability change
@@ -128,36 +142,41 @@ const UIController = {
 
     // Normalize probabilities to sum to 100%
     normalizeProbabilities(mode, changedOrigin) {
-        const probabilities = this.originProbabilities[mode];
-        const origins = Object.keys(probabilities);
-        
-        // Calculate total
-        const total = origins.reduce((sum, origin) => sum + probabilities[origin], 0);
-        
-        if (total === 0) {
-            // Reset to equal distribution
-            const equalValue = 100 / origins.length;
-            origins.forEach(origin => {
-                probabilities[origin] = equalValue;
-            });
-        } else if (total !== 100) {
-            // Normalize all values proportionally
-            const factor = 100 / total;
-            origins.forEach(origin => {
-                probabilities[origin] = probabilities[origin] * factor;
-            });
-        }
-
-        // Update all sliders and displays
-        origins.forEach(origin => {
-            const slider = document.getElementById(`slider-${origin.replace(/[^a-zA-Z0-9]/g, '-')}`);
-            const valueSpan = document.getElementById(`value-${origin.replace(/[^a-zA-Z0-9]/g, '-')}`);
+        try {
+            const probabilities = this.originProbabilities[mode];
+            const origins = Object.keys(probabilities);
             
-            if (slider && valueSpan) {
-                slider.value = probabilities[origin];
-                valueSpan.textContent = `${probabilities[origin].toFixed(1)}%`;
+            // Calculate total
+            const total = origins.reduce((sum, origin) => sum + probabilities[origin], 0);
+            
+            if (total === 0) {
+                // Reset to equal distribution
+                const equalValue = 100 / origins.length;
+                origins.forEach(origin => {
+                    probabilities[origin] = equalValue;
+                });
+            } else if (total !== 100) {
+                // Normalize all values proportionally
+                const factor = 100 / total;
+                origins.forEach(origin => {
+                    probabilities[origin] = probabilities[origin] * factor;
+                });
             }
-        });
+
+            // Update all sliders and displays
+            origins.forEach(origin => {
+                const safeOriginId = origin.replace(/[^a-zA-Z0-9]/g, '-');
+                const slider = document.getElementById(`slider-${safeOriginId}`);
+                const valueSpan = document.getElementById(`value-${safeOriginId}`);
+                
+                if (slider && valueSpan) {
+                    slider.value = probabilities[origin];
+                    valueSpan.textContent = `${probabilities[origin].toFixed(1)}%`;
+                }
+            });
+        } catch (error) {
+            console.error('Error normalizing probabilities:', error);
+        }
     },
 
     // Get current probabilities for character generation
@@ -234,8 +253,8 @@ const UIController = {
         if (url && this.isValidUrl(url)) {
             imgElement.src = url;
         } else {
-            // Use fallback placeholder
-            imgElement.src = 'https://via.placeholder.com/400x500/3a3a3a/d4af37?text=Custom+Character';
+            // Use fallback SVG data URI
+            imgElement.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='500'%3E%3Crect fill='%233a3a3a' width='400' height='500'/%3E%3Ctext fill='%23d4af37' font-family='Arial' font-size='24' x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle'%3EPersonaggio Personalizzato%3C/text%3E%3C/svg%3E";
         }
     },
 
