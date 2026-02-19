@@ -7,8 +7,8 @@ const UIController = {
 
     // Initialize the UI
     init() {
-        this.setMode("without"); // Default mode
         this.initializeProbabilities();
+        this.setMode("without"); // Default mode
     },
 
     // Initialize default probabilities
@@ -30,6 +30,8 @@ const UIController = {
             "Oscura Pulsione": 40,
             "Personalizzata": 40
         };
+        
+        console.log('Probabilities initialized:', this.originProbabilities);
     },
 
     // Handle mode selection
@@ -79,10 +81,20 @@ const UIController = {
             const origins = GameData.getOriginOptions(mode);
             const probabilities = this.originProbabilities[mode];
 
-            console.log('Creating sliders for mode:', mode, 'origins:', origins);
+            if (!probabilities) {
+                console.error('Probabilities not initialized for mode:', mode);
+                return;
+            }
+
+            console.log('Creating sliders for mode:', mode, 'origins:', origins, 'probabilities:', probabilities);
 
             // Create slider for each origin
             origins.forEach(origin => {
+                if (probabilities[origin] === undefined) {
+                    console.warn('Probability not found for origin:', origin);
+                    probabilities[origin] = 100 / origins.length; // Set default equal probability
+                }
+
                 const sliderDiv = document.createElement('div');
                 sliderDiv.className = 'probability-slider';
 
