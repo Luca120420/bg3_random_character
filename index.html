@@ -3,57 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BG3 Character Generator</title>
+    <title>Generatore di Personaggi BG3</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
     <header>
-        <h1>Baldur's Gate 3 Character Generator</h1>
+        <h1>Generatore Casuale di Personaggi Baldur's Gate 3</h1>
     </header>
 
     <main>
         <section class="mode-selection">
             <h2>Seleziona Modalità</h2>
             <div class="mode-buttons">
-                <button id="mode-without-origins" class="mode-btn">Script senza personaggi Origine</button>
-                <button id="mode-with-origins" class="mode-btn">Script con personaggi origine</button>
+                <button id="mode-without-origins" class="mode-btn">Escludi personaggi Origine</button>
+                <button id="mode-with-origins" class="mode-btn">Includi personaggi Origine</button>
             </div>
         </section>
 
         <section class="generation-section">
-            <button id="generate-btn" class="generate-btn">Generate Character</button>
+            <button id="generate-btn" class="generate-btn">Genera Personaggio</button>
         </section>
 
         <section id="character-sheet" class="character-sheet hidden">
             <div class="character-container">
                 <div class="character-image-container">
-                    <img id="character-image" src="" alt="Character Portrait" onerror="this.src='https://via.placeholder.com/400x500/3a3a3a/d4af37?text=Image+Not+Found'">
+                    <img id="character-image" src="" alt="Ritratto del Personaggio" onerror="this.src='https://via.placeholder.com/400x500/3a3a3a/d4af37?text=Immagine+Non+Trovata'">
                     <div class="image-url-editor">
-                        <label for="image-url-input">Image URL:</label>
-                        <input type="url" id="image-url-input" placeholder="https://example.com/image.png" value="">
+                        <label for="image-url-input">URL Immagine:</label>
+                        <input type="url" id="image-url-input" placeholder="https://esempio.com/immagine.png" value="">
                     </div>
                 </div>
 
                 <div class="character-details">
                     <div class="detail-row">
-                        <span class="label">Origin:</span>
+                        <span class="label">Origine:</span>
                         <span id="origin-display" class="value"></span>
                     </div>
                     <div class="detail-row">
-                        <span class="label">Race:</span>
+                        <span class="label">Razza:</span>
                         <span id="race-display" class="value"></span>
                     </div>
                     <div class="detail-row">
-                        <span class="label">Subrace:</span>
+                        <span class="label">Sottorazza:</span>
                         <span id="subrace-display" class="value"></span>
                     </div>
                     <div class="detail-row">
-                        <span class="label">Class:</span>
+                        <span class="label">Classe:</span>
                         <span id="class-display" class="value"></span>
                     </div>
                     <div class="detail-row">
-                        <span class="label">Subclass:</span>
+                        <span class="label">Sottoclasse:</span>
                         <span id="subclass-display" class="value"></span>
                     </div>
                     <div class="detail-row">
@@ -61,27 +61,27 @@
                         <span id="background-display" class="value"></span>
                     </div>
                     <div class="detail-row">
-                        <span class="label">Cantrips:</span>
+                        <span class="label">Trucchetti:</span>
                         <span id="cantrips-display" class="value"></span>
                     </div>
                     <div class="detail-row">
-                        <span class="label">Racial Cantrip:</span>
+                        <span class="label">Trucchetto Razziale:</span>
                         <span id="racial-cantrip-display" class="value"></span>
                     </div>
                     <div class="detail-row">
-                        <span class="label">Spells:</span>
+                        <span class="label">Incantesimi:</span>
                         <span id="spells-display" class="value"></span>
                     </div>
                     <div class="detail-row">
-                        <span class="label">Deity:</span>
+                        <span class="label">Divinità:</span>
                         <span id="deity-display" class="value"></span>
                     </div>
                     <div class="detail-row">
-                        <span class="label">Natural Explorer:</span>
+                        <span class="label">Esploratore Nato:</span>
                         <span id="explorer-display" class="value"></span>
                     </div>
                     <div class="detail-row">
-                        <span class="label">Alignment:</span>
+                        <span class="label">Allineamento:</span>
                         <span id="alignment-display" class="value"></span>
                     </div>
                 </div>

@@ -4,41 +4,41 @@ const GameData = {
     // Origin options for each mode
     origins: {
         withOriginCharacters: [
-            "Astarion", "Lae'Zel", "Gale", "Shadowheart", 
-            "Wyll", "Karlach", "Dark Urge", "Custom"
+            "Astarion", "Lae'Zel", "Gale", "Cuorescuro", 
+            "Wyll", "Karlach", "Oscura Pulsione", "Personalizzata"
         ],
-        withoutOriginCharacters: ["Dark Urge", "Custom"]
+        withoutOriginCharacters: ["Oscura Pulsione", "Personalizzata"]
     },
 
     // Races and their subraces
     races: {
-        "Elf": ["High Elf", "Wood Elf"],
-        "Tiefling": ["Asmodeus Tiefling", "Mephistopheles Tiefling", "Zariel Tiefling"],
-        "Drow": ["Lolth Drow", "Seldarine Drow"],
-        "Human": ["Non Esistente"],
+        "Elfo": ["Elfo Alto", "Elfo dei Boschi"],
+        "Tiefling": ["Tiefling di Asmodeus", "Tiefling di Mefistofele", "Tiefling di Zariel"],
+        "Drow": ["Drow di Lolth", "Drow di Seldarine"],
+        "Umano": ["Non Esistente"],
         "Githyanki": ["Non Esistente"],
-        "Dwarf": ["Gold Dwarf", "Shield Dwarf", "Duergar"],
-        "Half-Elf": ["High Half-Elf", "Wood Half-Elf", "Half-Drow"],
-        "Halfling": ["Lightfoot Halfling", "Strongheart Halfling"],
-        "Gnome": ["Rock Gnome", "Forest Gnome", "Deep Gnome"],
-        "Dragonborn": [
-            "Black Dragonborn", "Blue Dragonborn", "Brass Dragonborn",
-            "Bronze Dragonborn", "Copper Dragonborn", "Gold Dragonborn",
-            "Green Dragonborn", "Red Dragonborn", "Silver Dragonborn",
-            "White Dragonborn"
+        "Nano": ["Nano Dorato", "Nano degli Scudi", "Duergar"],
+        "Mezzelfo": ["Mezzelfo Alto", "Mezzelfo dei Boschi", "Mezzodrow"],
+        "Halfling": ["Halfling Piedelesto", "Halfling Cuoreforte"],
+        "Gnomo": ["Gnomo delle Rocce", "Gnomo delle Foreste", "Gnomo delle Profondità"],
+        "Dragonide": [
+            "Nero", "Blu", "Ottone",
+            "Bronzo", "Rame", "Oro",
+            "Verde", "Rosso", "Argento",
+            "Bianco"
         ],
-        "Half-Orc": ["Non Esistente"]
+        "Mezzorco": ["Non Esistente"]
     },
 
     // Classes and their subclass options
     classes: {
-        "Barbarian": { hasSubclass: false, subclass: "Non Esistente" },
-        "Bard": {
+        "Barbaro": { hasSubclass: false, subclass: "Non Esistente" },
+        "Bardo": {
             hasSubclass: true,
             subclassType: "instrument",
-            options: ["Flauto", "Violino", "Liuto", "Tamburo", "Corno"]
+            options: ["Tamburo da Braccio", "Flauto", "Liuto", "Lira", "Violino"]
         },
-        "Cleric": {
+        "Chierico": {
             hasSubclass: true,
             subclassType: "domain",
             options: [
@@ -47,18 +47,18 @@ const GameData = {
                 "Dominio della Tempesta", "Dominio della Guerra"
             ]
         },
-        "Druid": { hasSubclass: false, subclass: "Non Esistente" },
-        "Fighter": {
+        "Druido": { hasSubclass: false, subclass: "Non Esistente" },
+        "Guerriero": {
             hasSubclass: true,
             subclassType: "fighting style",
             options: [
-                "Arciere", "Difesa", "Duellante",
-                "Combattimento con Armi Grandi", "Protezione",
-                "Combattimento con Due Armi"
+                "Tiro con l'Arco", "Difesa", "Duellare",
+                "Combattere con Armi possenti", "Protezione",
+                "Combattere con Due Armi"
             ]
         },
-        "Monk": { hasSubclass: false, subclass: "Non Esistente" },
-        "Paladin": {
+        "Monaco": { hasSubclass: false, subclass: "Non Esistente" },
+        "Paladino": {
             hasSubclass: true,
             subclassType: "oath",
             options: ["Giuramento di Devozione", "Giuramento degli Antichi", "Giuramento di Vendetta"]
@@ -67,22 +67,22 @@ const GameData = {
             hasSubclass: true,
             subclassType: "favored enemy",
             options: [
-                "Cacciatore di Taglie", "Custode", "Cacciatore di Mostri",
-                "Ranger Keeper", "Ranger Stalker"
+                "Cacciatore di Taglie", "Custode del Velo", "Spezzamagie",
+                "Cavaliere Ranger", "Persecutore Consacrato"
             ]
         },
-        "Rogue": { hasSubclass: false, subclass: "Non Esistente" },
-        "Sorcerer": {
+        "Ladro": { hasSubclass: false, subclass: "Non Esistente" },
+        "Stregone": {
             hasSubclass: true,
             subclassType: "origin",
-            options: ["Magia Draconica", "Magia Selvaggia", "Magia delle Tempeste"]
+            options: ["Magia Selvaggia", "Discendenza Draconica", "Stregoneria della Tempesta"]
         },
         "Warlock": {
             hasSubclass: true,
             subclassType: "patron",
-            options: ["Il Folletto", "Il Grande Antico", "L'Infernale"]
+            options: ["L'Immondo", "Il Grande Antico", "Il Signore Fatato"]
         },
-        "Wizard": { hasSubclass: false, subclass: "Non Esistente" }
+        "Mago": { hasSubclass: false, subclass: "Non Esistente" }
     },
 
     // Backgrounds
@@ -94,58 +94,61 @@ const GameData = {
 
     // Cantrips by class
     cantrips: {
-        "Bard": [
-            "Blade Ward", "Dancing Lights", "Friends", "Light",
-            "Mage Hand", "Minor Illusion", "True Strike", "Vicious Mockery"
+        "Bardo": [
+            "Beffa Crudele", "Interdizione alle Lame", "Mano Magica", "Colpo Accurato",
+            "Amicizia", "Luci Danzanti", "Luce", "Illusione Minore"
         ],
-        "Cleric": [
-            "Guidance", "Light", "Resistance", "Sacred Flame",
-            "Thaumaturgy", "Produce Flame"
+        "Chierico": [
+            "Taumaturgia", "Fiamma Sacra", "Guida", "Resistenza",
+            "Luce", "Interdizione alle Lame", "Produrre Fiamma"
         ],
-        "Druid": [
-            "Guidance", "Produce Flame", "Resistance", "Shillelagh",
-            "Thorn Whip", "Poison Spray"
+        "Druido": [
+            "Guida", "Spruzzo Velenoso", "Produrre Fiamma", "Resistenza",
+            "Randello Incantato", "Frusta di spine"
         ],
-        "Sorcerer": [
-            "Acid Splash", "Blade Ward", "Chill Touch", "Dancing Lights",
-            "Fire Bolt", "Friends", "Light", "Mage Hand", "Minor Illusion",
-            "Poison Spray", "Ray of Frost", "Shocking Grasp", "True Strike"
+        "Stregone": [
+            "Interdizione alle Lame", "Fiotto Acido", "Mano Magica", "Spruzzo Velenoso",
+            "Colpo Accurato", "Amicizia", "Luci Danzanti", "Dardo di Fuoco", "Luce",
+            "Raggio di Gelo", "Stretta Folgorante", "Illusione Minore", "Tocco Gelido"
         ],
         "Warlock": [
-            "Blade Ward", "Chill Touch", "Eldritch Blast", "Friends",
-            "Mage Hand", "Minor Illusion", "Poison Spray", "True Strike"
+            "Interdizione alle Lame", "Tocco Gelido", "Deflagrazione Occulta", "Amicizia",
+            "Mano Magica", "Illusione Minore", "Spruzzo Velenoso", "Colpo Accurato"
         ],
-        "Wizard": [
-            "Acid Splash", "Blade Ward", "Chill Touch", "Dancing Lights",
-            "Fire Bolt", "Friends", "Light", "Mage Hand", "Minor Illusion",
-            "Poison Spray", "Ray of Frost", "Shocking Grasp", "True Strike"
+        "Mago": [
+            "Fiotto Acido", "Tocco Gelido", "Dardo di Fuoco", "Spruzzo Velenoso",
+            "Raggio di Gelo", "Stretta Folgorante", "Interdizione alle Lame", "Amicizia",
+            "Luci Danzanti", "Luce", "Mano Magica", "Illusione Minore", "Colpo Accurato"
         ]
     },
 
     // Spells by class
     spells: {
-        "Bard": [
-            "Animal Friendship", "Bane", "Charm Person", "Cure Wounds",
-            "Disguise Self", "Dissonant Whispers", "Faerie Fire", "Feather Fall",
-            "Healing Word", "Heroism", "Hideous Laughter", "Identify",
-            "Longstrider", "Sleep", "Speak with Animals", "Thunderwave"
+        "Bardo": [
+            "Amicizia con gli Animali", "Anatema", "Charme su Persone", "Cura Ferite",
+            "Camuffare sé stesso", "Sussurri Dissonanti", "Luminescenza", "Caduta Morbida",
+            "Parola Guaritrice", "Eroismo", "Passo Veloce", "Sonno",
+            "Parlare con gli Animali", "Risata Incontenibile di Tasha", "Onda Tonante"
         ],
-        "Sorcerer": [
-            "Burning Hands", "Charm Person", "Chromatic Orb", "Color Spray",
-            "Disguise Self", "Expeditious Retreat", "False Life", "Feather Fall",
-            "Fog Cloud", "Jump", "Mage Armor", "Magic Missile", "Ray of Sickness",
-            "Shield", "Sleep", "Thunderwave", "Witch Bolt"
+        "Stregone": [
+            "Mani Brucianti", "Charme su Persone", "Globo Cromatico", "Spruzzo Colorato",
+            "Camuffare sé Stesso", "Ritirata Rapida", "Vita Falsata", "Caduta Morbida",
+            "Nube di Nebbia", "Coltello di Ghiaccio", "Salto Potenziato", "Armatura Magica",
+            "Dardo Incantato", "Raggio di Infermità", "Scudo", "Sonno",
+            "Onda Tonante", "Dardo Stregato"
         ],
         "Warlock": [
-            "Armor of Agathys", "Arms of Hadar", "Charm Person", "Expeditious Retreat",
-            "Hellish Rebuke", "Hex", "Protection from Evil and Good", "Witch Bolt"
+            "Armatura di Agathys", "Fame di Hadar", "Mani Brucianti", "Charme su Persone",
+            "Comando", "Ritirata Rapida", "Intimorire Infernale", "Sortilegio",
+            "Protezione dal Bene e dal Male", "Dardo Stregato"
         ],
-        "Wizard": [
-            "Burning Hands", "Charm Person", "Chromatic Orb", "Color Spray",
-            "Disguise Self", "Expeditious Retreat", "False Life", "Feather Fall",
-            "Find Familiar", "Fog Cloud", "Grease", "Jump", "Longstrider",
-            "Mage Armor", "Magic Missile", "Protection from Evil and Good",
-            "Ray of Sickness", "Shield", "Sleep", "Thunderwave", "Witch Bolt"
+        "Mago": [
+            "Mani Brucianti", "Charme su Persone", "Globo Cromatico", "Spruzzo Colorato",
+            "Camuffare sé Stesso", "Ritirata Rapida", "Vita Falsata", "Caduta Morbida",
+            "Trova Famiglio", "Nube di Nebbia", "Unto", "Coltello di Ghiaccio",
+            "Salto Potenziato", "Passo Veloce", "Armatura Magica", "Dardo Incantato",
+            "Protezione dal Bene e dal Male", "Raggio di Infermità", "Scudo", "Sonno",
+            "Risata Incontenibile di Tasha", "Onda Tonante", "Dardo Stregato"
         ]
     },
 
@@ -176,68 +179,68 @@ const GameData = {
     // Origin character definitions with predefined attributes
     originDefinitions: {
         "Astarion": {
-            race: "Elf",
-            subrace: "High Elf",
+            race: "Elfo",
+            subrace: "Elfo Alto",
             class: null, // Random
             background: "Predefinito",
             deity: null,
             imageUrl: "https://bg3.wiki/w/images/1/1b/Portrait_Astarion.png"
         },
-        "Shadowheart": {
-            race: "Half-Elf",
-            subrace: "High Elf",
-            class: "Cleric",
+        "Cuorescuro": {
+            race: "Mezzelfo",
+            subrace: "Elfo Alto",
+            class: "Chierico",
             background: "Predefinito",
             deity: "Shar",
-            imageUrl: "https://bg3.wiki/w/images/thumb/4/4c/Portrait_Shadowheart.png/350px-Portrait_Shadowheart.png"
+            imageUrl: "https://bg3.wiki/w/images/thumb/1/14/Edward-vanderghote-shadowheart.jpg/600px-Edward-vanderghote-shadowheart.jpg.webp?20240208192049"
         },
         "Lae'Zel": {
             race: "Githyanki",
             subrace: "Non Esistente",
-            class: "Fighter",
+            class: "Guerriero",
             background: "Predefinito",
             deity: null,
-            imageUrl: "https://bg3.wiki/w/images/thumb/5/52/Portrait_Laezel.png/350px-Portrait_Laezel.png"
+            imageUrl: "https://bg3.wiki/w/images/8/86/Portrait_Lae%27zel.png"
         },
         "Gale": {
-            race: "Human",
+            race: "Umano",
             subrace: "Non Esistente",
-            class: "Wizard",
+            class: "Mago",
             background: "Predefinito",
             deity: null,
-            imageUrl: "https://bg3.wiki/w/images/thumb/0/0a/Portrait_Gale.png/350px-Portrait_Gale.png"
+            imageUrl: "https://bg3.wiki/w/images/thumb/c/c0/Edward-vanderghote-gale-portrait.png/375px-Edward-vanderghote-gale-portrait.png.webp?20231218190359"
         },
         "Wyll": {
-            race: "Human",
+            race: "Umano",
             subrace: "Non Esistente",
             class: "Warlock",
             background: "Predefinito",
             deity: null,
-            imageUrl: "https://bg3.wiki/w/images/thumb/1/1c/Portrait_Wyll.png/350px-Portrait_Wyll.png"
+            imageUrl: "https://bg3.wiki/w/images/thumb/f/fc/Edward-vanderghote-wyll.jpeg/600px-Edward-vanderghote-wyll.jpeg.webp?20240213111815"
         },
         "Karlach": {
             race: "Tiefling",
-            subrace: "Zariel Tiefling",
+            subrace: "Tiefling di Zariel",
             class: null, // Random
             background: "Predefinito",
             deity: null,
-            imageUrl: "https://bg3.wiki/w/images/thumb/5/59/Portrait_Karlach.png/350px-Portrait_Karlach.png"
+            imageUrl: "https://bg3.wiki/w/images/thumb/2/2a/Edward-vanderghote-karlach.jpg/600px-Edward-vanderghote-karlach.jpg.webp?20240208192228"
         },
-        "Dark Urge": {
+        "Oscura Pulsione": {
             race: null, // Random
             subrace: null, // Random
             class: null, // Random
             background: "Perseguitato",
             deity: null,
-            imageUrl: "https://bg3.wiki/w/images/thumb/d/d5/Portrait_DarkUrge.png/350px-Portrait_DarkUrge.png"
+            imageUrl: "https://img.game8.co/3744734/0084153d1d60e6e5e9b9f5d564b014e5.png/show"
         },
-        "Custom": {
+        "Personalizzata": {
             race: null, // Random
             subrace: null, // Random
             class: null, // Random
             background: null, // Random
             deity: null,
-            imageUrl: "https://via.placeholder.com/400x500/3a3a3a/d4af37?text=Custom+Character"
+            imageUrl: "https://bg3.wiki/w/images/2/21/Custom_Character_Portrait.png"
         }
     },
 

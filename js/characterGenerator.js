@@ -69,18 +69,18 @@ const CharacterGenerator = {
         const origins = GameData.getOriginOptions(mode);
         
         if (mode === "with") {
-            // 80% for Dark Urge + Custom (40% each)
+            // 80% for Oscura Pulsione + Personalizzata (40% each)
             // 20% for named origins (split among 6)
             const random = Math.random();
-            if (random < 0.4) return "Dark Urge";
-            if (random < 0.8) return "Custom";
+            if (random < 0.4) return "Oscura Pulsione";
+            if (random < 0.8) return "Personalizzata";
             
             // Remaining 20% for named origins
-            const namedOrigins = origins.filter(o => o !== "Dark Urge" && o !== "Custom");
+            const namedOrigins = origins.filter(o => o !== "Oscura Pulsione" && o !== "Personalizzata");
             return this.randomChoice(namedOrigins);
         } else {
-            // 50/50 split between Dark Urge and Custom
-            return Math.random() < 0.5 ? "Dark Urge" : "Custom";
+            // 50/50 split between Oscura Pulsione and Personalizzata
+            return Math.random() < 0.5 ? "Oscura Pulsione" : "Personalizzata";
         }
     },
 
@@ -111,10 +111,10 @@ const CharacterGenerator = {
 
     // Select background based on origin
     selectBackground(origin) {
-        if (origin === "Dark Urge") {
+        if (origin === "Oscura Pulsione") {
             return "Perseguitato";
         }
-        if (origin === "Custom") {
+        if (origin === "Personalizzata") {
             return this.randomChoice(GameData.backgrounds);
         }
         return "Predefinito";
@@ -129,12 +129,12 @@ const CharacterGenerator = {
 
         // Class cantrips
         const cantripCounts = {
-            "Bard": 2,
-            "Cleric": 3,
-            "Druid": 2,
-            "Sorcerer": 4,
+            "Bardo": 2,
+            "Chierico": 3,
+            "Druido": 2,
+            "Stregone": 4,
             "Warlock": 2,
-            "Wizard": 3
+            "Mago": 3
         };
 
         const count = cantripCounts[className];
@@ -145,9 +145,9 @@ const CharacterGenerator = {
             result.classCantrips = ["No"];
         }
 
-        // Racial cantrip for High Elf and High Half-Elf
-        if (subrace === "High Elf" || subrace === "High Half-Elf") {
-            const wizardCantrips = GameData.getCantrips("Wizard");
+        // Racial cantrip for Elfo Alto and Mezzelfo Alto
+        if (subrace === "Elfo Alto" || subrace === "Mezzelfo Alto") {
+            const wizardCantrips = GameData.getCantrips("Mago");
             const allCantrips = result.classCantrips[0] === "No" ? [] : result.classCantrips;
             
             // Select a racial cantrip that's not already in class cantrips
@@ -163,14 +163,14 @@ const CharacterGenerator = {
     // Select spells based on class
     selectSpells(className) {
         const spellCounts = {
-            "Bard": 4,
-            "Sorcerer": 2,
+            "Bardo": 4,
+            "Stregone": 2,
             "Warlock": 2,
-            "Wizard": 6
+            "Mago": 6
         };
 
-        // Cleric and Druid have prepared spells
-        if (className === "Cleric" || className === "Druid") {
+        // Chierico and Druido have prepared spells
+        if (className === "Chierico" || className === "Druido") {
             return ["Predefinito"];
         }
 
@@ -185,10 +185,10 @@ const CharacterGenerator = {
 
     // Select deity for Clerics
     selectDeity(className, origin) {
-        if (origin === "Shadowheart") {
+        if (origin === "Cuorescuro") {
             return "Shar";
         }
-        if (className === "Cleric") {
+        if (className === "Chierico") {
             return this.randomChoice(GameData.deities);
         }
         return "No";
