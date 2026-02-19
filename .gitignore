@@ -1,0 +1,46 @@
+# Kiro internal configuration and metadata
+.kiro/
+
+# Dependencies
+node_modules/
+
+# Environment variables and secrets
+.env
+.env.local
+.env.*.local
+
+# Build artifacts
+/dist
+/build
+/out
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Testing
+coverage/
+.nyc_output/
+
+# Test files and verification reports
+test-*.html
+verify-*.js
+run-*.js
+*-VERIFICATION.md
+TASK-*.md
+test-natural-explorer.js
+script_to_convert.py
+test-alignment-node.js
