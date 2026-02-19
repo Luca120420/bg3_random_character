@@ -96,6 +96,101 @@ main {
     outline-offset: 2px;
 }
 
+/* Probability Controls */
+.probability-controls {
+    background-color: var(--bg-card);
+    border: 2px solid var(--accent-gold);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 32px;
+    animation: fadeIn 0.5s ease;
+}
+
+.probability-controls h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: var(--accent-gold);
+    text-align: center;
+}
+
+.probability-sliders {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.probability-slider {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.slider-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.slider-label {
+    font-weight: bold;
+    color: var(--text-primary);
+    font-size: 16px;
+}
+
+.slider-value {
+    color: var(--accent-gold);
+    font-weight: bold;
+    font-size: 16px;
+    min-width: 50px;
+    text-align: right;
+}
+
+.slider-input {
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    background: var(--bg-secondary);
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.slider-input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--accent-gold);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.slider-input::-webkit-slider-thumb:hover {
+    background: var(--accent-light);
+    transform: scale(1.1);
+}
+
+.slider-input::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--accent-gold);
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.slider-input::-moz-range-thumb:hover {
+    background: var(--accent-light);
+    transform: scale(1.1);
+}
+
+.slider-input:focus {
+    outline: 2px solid var(--accent-light);
+    outline-offset: 2px;
+}
+
 /* Generation Section */
 .generation-section {
     text-align: center;
@@ -172,32 +267,6 @@ main {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     object-fit: cover;
     aspect-ratio: 4 / 5;
-}
-
-.image-url-editor {
-    margin-top: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.image-url-editor label {
-    font-size: 14px;
-    color: var(--text-secondary);
-}
-
-#image-url-input {
-    padding: 8px 12px;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    background: var(--bg-secondary);
-    color: var(--text-primary);
-    font-size: 14px;
-}
-
-#image-url-input:focus {
-    outline: 2px solid var(--accent-gold);
-    outline-offset: 1px;
 }
 
 /* Character Details */

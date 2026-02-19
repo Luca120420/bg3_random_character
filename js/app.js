@@ -18,10 +18,5 @@ document.addEventListener('DOMContentLoaded', () => {
         UIController.onGenerateClick();
     });
     
-    // Set up event listener for image URL input
-    document.getElementById('image-url-input').addEventListener('change', (e) => {
-        UIController.onImageUrlChange(e.target.value);
-    });
-    
     console.log('BG3 Character Generator initialized');
 });

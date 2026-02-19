@@ -21,6 +21,13 @@
             </div>
         </section>
 
+        <section class="probability-controls hidden" id="probability-controls">
+            <h2>Probabilità Origini</h2>
+            <div id="probability-sliders" class="probability-sliders">
+                <!-- Sliders will be dynamically generated here -->
+            </div>
+        </section>
+
         <section class="generation-section">
             <button id="generate-btn" class="generate-btn">Genera Personaggio</button>
         </section>
@@ -29,10 +36,6 @@
             <div class="character-container">
                 <div class="character-image-container">
                     <img id="character-image" src="" alt="Ritratto del Personaggio" onerror="this.src='https://via.placeholder.com/400x500/3a3a3a/d4af37?text=Immagine+Non+Trovata'">
-                    <div class="image-url-editor">
-                        <label for="image-url-input">URL Immagine:</label>
-                        <input type="url" id="image-url-input" placeholder="https://esempio.com/immagine.png" value="">
-                    </div>
                 </div>
 
                 <div class="character-details">

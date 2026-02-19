@@ -2,11 +2,11 @@
 
 const CharacterGenerator = {
     // Main generation method
-    generate(mode) {
+    generate(mode, customProbabilities = null) {
         const character = {};
         
-        // Select origin based on mode
-        character.origin = this.selectOrigin(mode);
+        // Select origin based on mode and custom probabilities
+        character.origin = this.selectOrigin(mode, customProbabilities);
         
         // Apply origin-specific predefined attributes
         const originDef = GameData.originDefinitions[character.origin];
@@ -65,9 +65,15 @@ const CharacterGenerator = {
     },
 
     // Select origin with weighted probability
-    selectOrigin(mode) {
+    selectOrigin(mode, customProbabilities = null) {
         const origins = GameData.getOriginOptions(mode);
         
+        if (customProbabilities) {
+            // Use custom probabilities
+            return this.selectWithCustomProbabilities(origins, customProbabilities);
+        }
+        
+        // Use default probabilities
         if (mode === "with") {
             // 80% for Oscura Pulsione + Personalizzata (40% each)
             // 20% for named origins (split among 6)
@@ -82,6 +88,22 @@ const CharacterGenerator = {
             // 50/50 split between Oscura Pulsione and Personalizzata
             return Math.random() < 0.5 ? "Oscura Pulsione" : "Personalizzata";
         }
+    },
+
+    // Select origin using custom probabilities
+    selectWithCustomProbabilities(origins, probabilities) {
+        const random = Math.random() * 100; // Random number between 0 and 100
+        let cumulative = 0;
+        
+        for (const origin of origins) {
+            cumulative += probabilities[origin] || 0;
+            if (random <= cumulative) {
+                return origin;
+            }
+        }
+        
+        // Fallback to last origin if something goes wrong
+        return origins[origins.length - 1];
     },
 
     // Select random race
